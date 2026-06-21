@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次抵达 · 开云</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f7f5f1;
+            color: #2e2e2e;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 1024px;
+            width: 100%;
+            padding: 0 24px;
+            margin: 0 auto;
+        }
+
+        /* 深色头图 — 夜幕般的沉静 */
+        .hero-dark {
+            position: relative;
+            background: #1a1c1e;
+            padding: 80px 0 60px 0;
+            margin: 0 -24px 0 -24px;
+            border-radius: 0 0 60px 60px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            overflow: hidden;
+        }
+
+        .hero-dark::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 40% 30%, #3b3f45 0%, #1a1c1e 80%);
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #e9e6df;
+            margin-bottom: 12px;
+        }
+
+        .hero-content .sub {
+            font-size: 1.1rem;
+            color: #b9b4aa;
+            font-weight: 300;
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+            border-top: 1px solid rgba(233,230,223,0.15);
+            padding-top: 20px;
+        }
+
+        /* 正文区 — 浅色、留白、温和 */
+        .story-body {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 48px 40px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .story-body h2 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            color: #2c2a28;
+            margin: 36px 0 16px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .story-body h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .story-body p {
+            margin-bottom: 1.3rem;
+            color: #3c3a38;
+        }
+
+        .story-body a {
+            color: #996f4c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 450;
+        }
+
+        .story-body a:hover {
+            color: #7a583b;
+            border-bottom-color: #b58b6a;
+        }
+
+        /* 特点列表 — 卡片式平铺 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 32px 0 28px 0;
+        }
+
+        .feature-card {
+            background: #f8f6f3;
+            padding: 24px 20px;
+            border-radius: 20px;
+            transition: background 0.2s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .feature-card:hover {
+            background: #f1ede8;
+        }
+
+        .feature-card .icon {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #2c2a28;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #5b5854;
+            margin: 0;
+        }
+
+        /* 提示 / 场景区块 */
+        .gentle-note {
+            background: #f3f0eb;
+            border-left: 4px solid #b58b6a;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 28px 0 24px 0;
+            font-size: 0.98rem;
+            color: #3a3835;
+        }
+
+        .gentle-note strong {
+            color: #2c2a28;
+            font-weight: 500;
+        }
+
+        .faq-mini {
+            margin-top: 32px;
+            border-top: 1px solid #e5e0d9;
+            padding-top: 24px;
+        }
+
+        .faq-mini details {
+            margin-bottom: 16px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: #faf9f6;
+            transition: background 0.15s;
+        }
+
+        .faq-mini details[open] {
+            background: #f3efe9;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 480;
+            color: #3a3733;
+            padding: 4px 0;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-mini summary::before {
+            content: "☞";
+            color: #996f4c;
+            font-size: 1.1rem;
+        }
+
+        .faq-mini details[open] summary::before {
+            content: "☟";
+        }
+
+        .faq-mini p {
+            margin: 8px 0 4px 0;
+            color: #55524e;
+            font-size: 0.93rem;
+            padding-left: 26px;
+        }
+
+        /* 温和结尾 */
+        .epilogue {
+            margin: 40px 0 16px 0;
+            padding: 28px 0 10px 0;
+            border-top: 1px solid #e5e0d9;
+            text-align: center;
+            color: #5b5854;
+            font-size: 0.98rem;
+        }
+
+        .epilogue span {
+            display: inline-block;
+            border-bottom: 1px solid #d6cfc6;
+            padding-bottom: 6px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8f8981;
+            padding: 32px 0 40px 0;
+            letter-spacing: 0.3px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            .hero-dark {
+                padding: 60px 0 40px 0;
+                border-radius: 0 0 36px 36px;
+            }
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+            .hero-content .sub {
+                font-size: 0.98rem;
+                padding-top: 14px;
+            }
+            .story-body {
+                padding: 28px 20px;
+                margin-top: -20px;
+                border-radius: 18px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .story-body h2 {
+                font-size: 1.3rem;
+            }
+            .faq-mini details {
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .page {
+                padding: 0 16px;
+            }
+            .hero-dark {
+                margin: 0 -16px 0 -16px;
+            }
+            .story-body {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 深色头图 -->
+        <section class="hero-dark">
+            <div class="hero-content">
+                <h1>再次抵达 · 开云</h1>
+                <div class="sub">
+                    有些地方值得收藏，有些名字值得记下。<br>
+                    每一次回访，都是一次新的确认。
+                </div>
+            </div>
+        </section>
+
+        <!-- 故事体正文 -->
+        <div class="story-body">
+            <h2>收藏一个角落，留一处安静入口</h2>
+            <p>
+                有时候你只是偶然路过，却因为某种气氛而停下来。后来你想起它，试着重新找到那个地方——也许是一段文字、一个名称、一种简洁的秩序。对于许多人来说，<a href="https://main-home-ky.com">开云</a>就是这样一种存在：不张扬，却在需要的时候一直在那里。
+            </p>
+            <p>
+                把链接收藏在书签里，或是记在笔记中，不是因为它催促你回来，而是因为你愿意为自己保留一个方向。持续关注不是义务，而是一种从容的信任——你知道那里不会变得嘈杂，也不会丢失初衷。
+            </p>
+
+            <h2>为什么这里值得你再次打开</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🕊️</div>
+                    <h3>沉静的气质</h3>
+                    <p>没有弹窗与横幅，页面像午后窗台一样干净。每一次加载都带着一致的安定感。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📌</div>
+                    <h3>可依赖的入口</h3>
+                    <p>无论何时，域名稳定指向同一个地方。收藏之后不必担心失效或转向别处。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🧭</div>
+                    <h3>逐渐清晰的轮廓</h3>
+                    <p>随着你一次次回访，你对它的理解会更深。细节会慢慢浮现，就像与一个地方熟悉起来。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">☕</div>
+                    <h3>不催促的陪伴</h3>
+                    <p>它不要求你停留多久，也不设定任何任务。你在或不在，它都保持着自己的节奏。</p>
+                </div>
+            </div>
+
+            <div class="gentle-note">
+                <strong>一个小提醒：</strong> 如果你已经有一阵子没有回来，不妨试着现在翻开收藏夹，输入“开云”或直接跟随记忆的索引。有些页面会随着时间积累新的层次，但它的语调始终一致。
+            </div>
+
+            <h2>常见的一些思绪</h2>
+            <div class="faq-mini">
+                <details>
+                    <summary>为什么我会反复访问同一个站点？</summary>
+                    <p>有时是因为内容稳定可靠，有时是因为它代表了一种熟悉的空间感。收藏一个地址，就像在数字世界里保留一处安静的角落。</p>
+                </details>
+                <details>
+                    <summary>如何持续关注而不感到负担？</summary>
+                    <p>不需要设置提醒，也不需要强迫自己定期查看。当你有时间、有心情的时候，自然想起，然后打开即可。轻松的节奏才可持续。</p>
+                </details>
+                <details>
+                    <summary>这个页面会变化吗？</summary>
+                    <p>好的页面会随着时间做细微的调整，但核心气质不会轻易改变。你再次访问时，既会认出它，也可能发现一点新意。</p>
+                </details>
+            </div>
+
+            <div class="epilogue">
+                <span>你收藏的不仅是一个链接，更是一段可以随时返回的节奏。</span>
+            </div>
+        </div>
+
+        <footer>
+            · 保持温和，保持开放 ·
+        </footer>
+    </div>
+</body>
+</html>
