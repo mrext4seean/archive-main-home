@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 体育资讯与平台介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f3f5f7;
+            color: #2c3e4f;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+        .page {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        /* hero 开场短句 */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2.8rem 2.5rem 2.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.03);
+            border: 1px solid #e5e9ef;
+            margin-bottom: 2.2rem;
+            text-align: center;
+        }
+        .hero .tagline {
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #1f2a36;
+            margin-bottom: 0.5rem;
+        }
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #5f6b7a;
+            max-width: 520px;
+            margin: 0.8rem auto 0;
+            border-left: 3px solid #b7c0cb;
+            padding-left: 1.2rem;
+            text-align: left;
+        }
+        /* 承接段落 */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e1e6ed;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            margin-bottom: 2rem;
+        }
+        .intro-card p {
+            margin-bottom: 1.2rem;
+        }
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+        .intro-card strong {
+            color: #1e2a36;
+            font-weight: 600;
+        }
+        /* 特点列表 —— 卡片式条目 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+        }
+        .feature-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem 1.8rem;
+            border: 1px solid #e1e6ed;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            flex: 1 1 220px;
+            min-width: 180px;
+            transition: box-shadow 0.2s ease;
+        }
+        .feature-card:hover {
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2a36;
+            border-bottom: 2px solid #eef1f5;
+            padding-bottom: 0.35rem;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3f4d5c;
+        }
+        /* 温和结尾 + 链接自然嵌入 */
+        .closing {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e1e6ed;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            margin-bottom: 2.2rem;
+        }
+        .closing p {
+            margin-bottom: 0.8rem;
+        }
+        .closing .link-sentence {
+            font-size: 1.02rem;
+        }
+        .closing a {
+            color: #1d4a7a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #bdc9d9;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .closing a:hover {
+            color: #0b2d4c;
+            border-bottom-color: #1d4a7a;
+        }
+        /* FAQ 摘要小段 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            border: 1px solid #e1e6ed;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            margin-bottom: 2rem;
+        }
+        .faq-mini h4 {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1f2a36;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f0f3f7;
+        }
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-weight: 500;
+            color: #2b3c4e;
+        }
+        .faq-answer {
+            font-size: 0.94rem;
+            color: #4f5f6f;
+            margin-top: 0.1rem;
+        }
+        .footer-note {
+            text-align: center;
+            color: #8b96a5;
+            font-size: 0.85rem;
+            border-top: 1px solid #dce1e8;
+            padding-top: 1.8rem;
+            margin-top: 0.5rem;
+        }
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.9rem;
+            }
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero .tagline {
+                font-size: 1.5rem;
+            }
+            .intro-card, .closing, .faq-mini {
+                padding: 1.5rem 1.2rem;
+            }
+            .feature-grid {
+                gap: 1rem;
+            }
+            .feature-card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 hero -->
+    <div class="hero">
+        <div class="tagline">一眼了解 · 体育与游戏交汇处</div>
+        <div class="sub">
+            打开这个页面的人，多半是想确认：这里到底提供什么？<br>
+            简洁的回答是 —— 体育资讯、赛事看点，以及围绕“玩”展开的内容聚合。
+        </div>
+    </div>
+
+    <!-- 承接段落：从用户快速识别需求出发 -->
+    <div class="intro-card">
+        <p>
+            <strong>不必在多个标签页之间反复跳转</strong> —— 这是许多人访问体育类站点时的真实期待。
+            <strong>爱游戏</strong> 所做的事，就是把体育新闻、热门比赛动态、以及带有游戏视角的解读放在一起。你不需要费力辨别某个链接通向哪里，整个站点的结构都围绕“快速定位自己感兴趣的运动项目或话题”来组织。
+        </p>
+        <p>
+            从足球、篮球到电竞赛事，每一条内容都经过筛选，避免信息过载。如果你只是想知道昨晚比赛的关键转折，或者某个选手的近况，这里会直接给出要点，而不是让广告或无关模块分散注意力。
+        </p>
+    </div>
+
+    <!-- 特点列表（三个卡片） -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>赛事简讯</h3>
+            <p>每轮比赛后提供简明回顾，重点突出比分、战术变化和影响排名的事件，适合没时间看全场回放的你。</p>
+        </div>
+        <div class="feature-card">
+            <h3>视角延伸</h3>
+            <p>不止于比分。部分内容会从游戏化角度拆解战术，或引入模拟分析，让理解体育的方式更有层次。</p>
+        </div>
+        <div class="feature-card">
+            <h3>干净导航</h3>
+            <p>分区清晰，没有弹窗式推广。你可以按运动种类、赛事阶段或话题标签来浏览，每一步都自然。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 链接自然嵌入 -->
+    <div class="closing">
+        <p class="link-sentence">
+            如果你希望从一个可信的起点开始了解体育与游戏内容的结合，可以直接前往 
+            <a href="https://newssports-igame.com">爱游戏</a>，看看它的首页如何呈现最新动态。
+        </p>
+        <p>
+            不必着急点击每一个链接，那里不需要注册也能浏览全部公开内容。花几分钟翻翻几个栏目，你就能判断它是否符合自己的习惯。网站本身也在逐步调整，尽量让信息层级更直观。
+        </p>
+        <p style="margin-bottom:0;">
+            无论你是资深球迷、偶尔关注比赛的路人，还是对体育游戏化分析感兴趣的人，这个站点都留出了足够的空间让你自行探索。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 (温和实用) -->
+    <div class="faq-mini">
+        <h4>常见疑问 · 简短回答</h4>
+        <div class="faq-item">
+            <div class="faq-question">需要付费或注册才能看内容吗？</div>
+            <div class="faq-answer">目前所有公开的新闻、简讯和列表页都免费阅读，无需登录。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">内容更新频率如何？</div>
+            <div class="faq-answer">主要赛事期间保持每日更新，休赛期或有重要转会、政策变动时也会跟进。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">主要覆盖哪些体育项目？</div>
+            <div class="faq-answer">足球、篮球、网球、电竞赛事是重点，同时涵盖综合体育与游戏化内容专题。</div>
+        </div>
+    </div>
+
+    <!-- 简单页脚，仅为占位，不包含多余引导 -->
+    <div class="footer-note">
+        信息页 · 内容索引说明
+    </div>
+</div>
+</body>
+</html>
